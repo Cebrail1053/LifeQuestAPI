@@ -13,7 +13,7 @@ The project is designed to showcase:
 
 ---
 
-## 📖 Table of Contents
+<!-- ## 📖 Table of Contents
 1. [Overview](#:scroll:-Overview)
 2. [Features](#--features)
 3. [Technologies](#--technologies)
@@ -21,7 +21,15 @@ The project is designed to showcase:
 5. [API Endpoints](#*-api-endpoints)
 6. [Database Schema](#database-schema)
 7. [Sample Data](#sample-data)
-8. [Future Improvements](#:rocket:-future-improvements)
+8. [Future Improvements](#":rocket:-future-improvements") -->
+
+
+  1. [📜 Overview](#-overview)
+  2. [✨ Features](#-features)
+  3. [🛠 Technologies](#-technologies)
+  4. [⚙️ Setup \& Installation](#️-setup--installation)
+  5. [📡 API Endpoints](#-api-endpoints)
+  6. [🚀  Future Improvements](#--future-improvements)
 
 ---
 
@@ -100,7 +108,7 @@ mvn spring-boot:run
 
 ---
 
-## **📡 API Endpoints**
+## 📡 API Endpoints
 
 | Method | Endpoint                                  | Description                |
 | ------ | ----------------------------------------- | -------------------------- |
@@ -124,7 +132,7 @@ mvn spring-boot:run
 
 ---
 
-## **🚀  Future Improvements**
+## 🚀  Future Improvements
 
 - Authentication & Authorization with Spring Security + JWT
 - Leaderboards for top XP players
