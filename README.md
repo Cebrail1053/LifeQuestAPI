@@ -14,14 +14,14 @@ The project is designed to showcase:
 ---
 
 ## 📖 Table of Contents
-1. [Overview](#overview)
-2. [Features](#features)
-3. [Technologies](#technologies)
-4. [Setup & Installation](#setup--installation)
-5. [API Endpoints](#api-endpoints)
+1. [Overview](#📜-Overview)
+2. [Features](#✨-features)
+3. [Technologies](#🛠-technologies)
+4. [Setup & Installation](#⚙️-setup--installation)
+5. [API Endpoints](#📡-api-endpoints)
 6. [Database Schema](#database-schema)
 7. [Sample Data](#sample-data)
-8. [Future Improvements](#future-improvements)
+8. [Future Improvements](#🚀-future-improvements)
 
 ---
 
@@ -86,7 +86,8 @@ git clone https://github.com/Cebrail1053/LifeQuestAPI.git
     spring.profiles.active=prod
     ```
     - Update MySQL database url, username, and password in `application-prod.properties`
-    > **NOTE:** By default the values in `application-prod.properties` are coming from an external file called `application-secret.txt`. If you choose to continue using the imported values, then you'll need to created you're own `application-secret.txt` file.
+
+> **NOTE:** By default the values in `application-prod.properties` are coming from an external file called `application-secret.txt`. If you choose to continue using the imported values, then you'll need to created you're own `application-secret.txt` file.
 
 ### **3. Run the application**
 ```bash
@@ -99,7 +100,7 @@ mvn spring-boot:run
 
 ---
 
-## API Endpoints
+## **📡 API Endpoints**
 
 | Method | Endpoint                                  | Description                |
 | ------ | ----------------------------------------- | -------------------------- |
