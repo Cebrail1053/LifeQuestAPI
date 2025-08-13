@@ -14,14 +14,14 @@ The project is designed to showcase:
 ---
 
 ## 📖 Table of Contents
-1. [Overview](#📜-Overview)
-2. [Features](#✨-features)
-3. [Technologies](#🛠-technologies)
-4. [Setup & Installation](#⚙️-setup--installation)
-5. [API Endpoints](#📡-api-endpoints)
+1. [Overview](#--Overview)
+2. [Features](#--features)
+3. [Technologies](#--technologies)
+4. [Setup & Installation](#*-setup--installation)
+5. [API Endpoints](#*-api-endpoints)
 6. [Database Schema](#database-schema)
 7. [Sample Data](#sample-data)
-8. [Future Improvements](#🚀-future-improvements)
+8. [Future Improvements](#-future-improvements)
 
 ---
 
