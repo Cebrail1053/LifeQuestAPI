@@ -8,11 +8,11 @@ public interface PlayerService {
 
     List<Player> getAllPlayers();
 
-    Player getPlayerById(int id);
+    Player getPlayerById(Long id);
 
     Player createPlayer(Player player);
 
     Player updatePlayer(Player player);
 
-    boolean deletePlayer(int id);
+    void deletePlayer(Long id);
 }

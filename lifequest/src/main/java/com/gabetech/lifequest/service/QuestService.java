@@ -8,11 +8,11 @@ public interface QuestService {
 
     List<Quest> getAllQuests();
 
-    Quest getQuestById(int id);
+    Quest getQuestById(Long id);
 
     Quest createQuest(Quest quest);
 
     Quest updateQuest(Quest quest);
 
-    boolean deleteQuest(int id);
+    void deleteQuest(Long id);
 }
