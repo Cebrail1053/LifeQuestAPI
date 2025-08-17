@@ -21,7 +21,7 @@ public class Player {
     private int id;
     private String name;
     private int level;
-    private int experience;
+    private int xp;
     private LocalDateTime createdAt;
 
     @OneToMany(mappedBy = "player", cascade = CascadeType.ALL, orphanRemoval = true)
