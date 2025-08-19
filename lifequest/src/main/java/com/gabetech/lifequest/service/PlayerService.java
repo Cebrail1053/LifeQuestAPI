@@ -1,18 +1,19 @@
 package com.gabetech.lifequest.service;
 
-import com.gabetech.lifequest.model.entity.Player;
+import com.gabetech.lifequest.model.dto.PlayerRequestDTO;
+import com.gabetech.lifequest.model.dto.PlayerResponseDTO;
 
 import java.util.List;
 
 public interface PlayerService {
 
-    List<Player> getAllPlayers();
+    List<PlayerResponseDTO> getAllPlayers();
 
-    Player getPlayerById(Long id);
+    PlayerResponseDTO getPlayerById(Long id);
 
-    Player createPlayer(Player player);
+    PlayerResponseDTO createPlayer(PlayerRequestDTO requestDTO);
 
-    Player updatePlayer(Player player);
+    PlayerResponseDTO updatePlayer(Long id, PlayerRequestDTO requestDTO);
 
     void deletePlayer(Long id);
 }

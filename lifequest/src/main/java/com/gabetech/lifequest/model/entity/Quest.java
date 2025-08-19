@@ -2,6 +2,7 @@ package com.gabetech.lifequest.model.entity;
 
 import com.gabetech.lifequest.model.enums.Difficulty;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -26,6 +27,7 @@ public class Quest {
     private String description;
     @Enumerated(value = EnumType.STRING)
     private Difficulty difficulty;
+    @Column(name = "xp_reward")
     private int xpReward;
     private LocalDateTime createdAt;
 
