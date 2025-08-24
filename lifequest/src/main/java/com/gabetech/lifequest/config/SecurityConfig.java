@@ -12,10 +12,11 @@ import static org.springframework.security.config.Customizer.withDefaults;
 @Configuration
 public class SecurityConfig {
 
+    //TODO: Change this to secure endpoints after development
     @Bean
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests((requests) ->
-              requests.requestMatchers("/h2-console/**").permitAll()
+              requests.requestMatchers("/**").permitAll()
                     .anyRequest().authenticated());
         http.headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin));
         http.csrf(CsrfConfigurer::disable);
