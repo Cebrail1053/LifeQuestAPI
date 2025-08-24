@@ -2,22 +2,25 @@ package com.gabetech.lifequest.model.entity;
 
 import com.gabetech.lifequest.model.enums.ItemType;
 import com.gabetech.lifequest.model.enums.Rarity;
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
+@ToString
 public class Item {
 
     @Id
@@ -28,8 +31,6 @@ public class Item {
     private ItemType type;
     @Enumerated(value = EnumType.STRING)
     private Rarity rarity;
+    @CreationTimestamp
     private LocalDateTime createdAt;
-
-    @OneToMany(mappedBy = "item", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Inventory> playerInventorySet = new HashSet<>();
 }

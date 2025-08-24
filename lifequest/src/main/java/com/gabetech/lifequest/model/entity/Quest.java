@@ -1,7 +1,6 @@
 package com.gabetech.lifequest.model.entity;
 
 import com.gabetech.lifequest.model.enums.Difficulty;
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -9,15 +8,19 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
+@ToString
 public class Quest {
 
     @Id
@@ -29,8 +32,6 @@ public class Quest {
     private Difficulty difficulty;
     @Column(name = "xp_reward")
     private int xpReward;
+    @CreationTimestamp
     private LocalDateTime createdAt;
-
-    @OneToMany(mappedBy = "quest", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<PlayerQuest> playerQuests = new HashSet<>();
 }
