@@ -1,5 +1,8 @@
 package com.gabetech.lifequest.service.impl;
 
+import com.gabetech.lifequest.common.utils.MapperUtil;
+import com.gabetech.lifequest.model.dto.AchievementRequestDTO;
+import com.gabetech.lifequest.model.dto.AchievementResponseDTO;
 import com.gabetech.lifequest.model.entity.Achievement;
 import com.gabetech.lifequest.repository.AchievementRepository;
 import com.gabetech.lifequest.service.AchievementService;
@@ -16,13 +19,14 @@ public class AchievementServiceImpl implements AchievementService {
     private final AchievementRepository achievementRepository;
 
     @Override
-    public List<Achievement> getAllAchievements() {
-        return achievementRepository.findAll();
+    public List<AchievementResponseDTO> getAllAchievements() {
+        return achievementRepository.findAll().stream().map(MapperUtil::toDto).toList();
     }
 
     @Override
     @Transactional
-    public Achievement createAchievement(Achievement achievement) {
-        return achievementRepository.save(achievement);
+    public AchievementResponseDTO createAchievement(AchievementRequestDTO requestDTO) {
+        Achievement achievement = MapperUtil.toEntity(requestDTO);
+        return MapperUtil.toDto(achievementRepository.save(achievement));
     }
 }

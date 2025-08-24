@@ -1,18 +1,19 @@
 package com.gabetech.lifequest.service;
 
-import com.gabetech.lifequest.model.entity.Quest;
+import com.gabetech.lifequest.model.dto.QuestRequestDTO;
+import com.gabetech.lifequest.model.dto.QuestResponseDTO;
 
 import java.util.List;
 
 public interface QuestService {
 
-    List<Quest> getAllQuests();
+    List<QuestResponseDTO> getAllQuests();
 
-    Quest getQuestById(Long id);
+    QuestResponseDTO getQuestById(Long id);
 
-    Quest createQuest(Quest quest);
+    QuestResponseDTO createQuest(QuestRequestDTO requestDTO);
 
-    Quest updateQuest(Quest quest);
+    QuestResponseDTO updateQuest(Long id, QuestRequestDTO requestDTO);
 
     void deleteQuest(Long id);
 }

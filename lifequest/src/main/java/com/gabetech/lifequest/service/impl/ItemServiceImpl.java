@@ -1,9 +1,11 @@
 package com.gabetech.lifequest.service.impl;
 
+import com.gabetech.lifequest.common.utils.MapperUtil;
+import com.gabetech.lifequest.model.dto.ItemRequestDTO;
+import com.gabetech.lifequest.model.dto.ItemResponseDTO;
 import com.gabetech.lifequest.model.entity.Item;
 import com.gabetech.lifequest.repository.ItemRepository;
 import com.gabetech.lifequest.service.ItemService;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,13 +18,13 @@ public class ItemServiceImpl implements ItemService {
     private final ItemRepository itemRepository;
 
     @Override
-    public List<Item> getAllItems() {
-        return itemRepository.findAll();
+    public List<ItemResponseDTO> getAllItems() {
+        return itemRepository.findAll().stream().map(MapperUtil::toDto).toList();
     }
 
     @Override
-    @Transactional
-    public Item createItem(Item item) {
-        return itemRepository.save(item);
+    public ItemResponseDTO createItem(ItemRequestDTO requestDTO) {
+        Item quest = MapperUtil.toEntity(requestDTO);
+        return MapperUtil.toDto(itemRepository.save(quest));
     }
 }

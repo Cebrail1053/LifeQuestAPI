@@ -1,12 +1,14 @@
 package com.gabetech.lifequest.service;
 
+import com.gabetech.lifequest.model.dto.AchievementRequestDTO;
+import com.gabetech.lifequest.model.dto.AchievementResponseDTO;
 import com.gabetech.lifequest.model.entity.Achievement;
 
 import java.util.List;
 
 public interface AchievementService {
 
-    List<Achievement> getAllAchievements();
+    List<AchievementResponseDTO> getAllAchievements();
 
-    Achievement createAchievement(Achievement achievement);
+    AchievementResponseDTO createAchievement(AchievementRequestDTO requestDTO);
 }

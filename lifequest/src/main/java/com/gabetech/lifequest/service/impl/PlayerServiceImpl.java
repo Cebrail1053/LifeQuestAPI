@@ -6,9 +6,9 @@ import com.gabetech.lifequest.model.dto.PlayerResponseDTO;
 import com.gabetech.lifequest.model.entity.Player;
 import com.gabetech.lifequest.repository.PlayerRepository;
 import com.gabetech.lifequest.service.PlayerService;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 

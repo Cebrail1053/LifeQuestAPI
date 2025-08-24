@@ -1,12 +1,13 @@
 package com.gabetech.lifequest.service;
 
-import com.gabetech.lifequest.model.entity.Item;
+import com.gabetech.lifequest.model.dto.ItemRequestDTO;
+import com.gabetech.lifequest.model.dto.ItemResponseDTO;
 
 import java.util.List;
 
 public interface ItemService {
 
-    List<Item> getAllItems();
+    List<ItemResponseDTO> getAllItems();
 
-    Item createItem(Item item);
+    ItemResponseDTO createItem(ItemRequestDTO requestDTO);
 }
