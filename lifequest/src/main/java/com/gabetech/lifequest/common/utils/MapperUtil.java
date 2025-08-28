@@ -65,7 +65,7 @@ public class MapperUtil {
             return null;
         }
         return new AchievementResponseDTO(achievement.getId(), achievement.getName(),
-              achievement.getCondition());
+              achievement.getDescription());
     }
 
     public static Achievement toEntity(AchievementRequestDTO requestDTO) {
@@ -74,6 +74,7 @@ public class MapperUtil {
         }
         Achievement achievement = new Achievement();
         achievement.setName(requestDTO.name());
+        achievement.setDescription(requestDTO.description());
         achievement.setCondition(requestDTO.condition());
         return achievement;
     }
