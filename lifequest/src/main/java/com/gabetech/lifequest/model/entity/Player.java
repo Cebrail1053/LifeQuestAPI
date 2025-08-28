@@ -39,7 +39,7 @@ public class Player {
 
     @OneToMany(mappedBy = "player", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference("player-inventory")
-    private Set<Inventory> inventorySet = new HashSet<>();
+    private Set<Inventory> inventory = new HashSet<>();
 
     @OneToMany(mappedBy = "player", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference("player-quests")

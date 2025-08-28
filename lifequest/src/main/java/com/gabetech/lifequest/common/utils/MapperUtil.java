@@ -40,7 +40,7 @@ public class MapperUtil {
         if (includeDetails) {
             achievements = player.getAchievements() != null ? new HashSet<>(player.getAchievements()) :
                   new HashSet<>();
-            inventory = player.getInventorySet() != null ? new HashSet<>(player.getInventorySet()) :
+            inventory = player.getInventory() != null ? new HashSet<>(player.getInventory()) :
                   new HashSet<>();
             quests = player.getQuests() != null ? new HashSet<>(player.getQuests()) : new HashSet<>();
         }

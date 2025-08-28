@@ -123,8 +123,13 @@ mvn spring-boot:run
 
 ## 🚀  Future Improvements
 
+### Priority Improvements:
+1. Removing **SpEL (Spring Expression Language)** database entries for Achievement conditions. I thought it to be a good choice for my use case since it supports object graph traversal and filtering. However, having SpEL syntax in the DB is verbose and requires a good amount of input validation and sanitation. In production, I'd choose to use a Java rules engine like Easy Rules to provide more abstraction when creating Achievement condition rules. 
+
+### Other Features to consider:
 - Authentication & Authorization with Spring Security + JWT
 - Leaderboards for top XP players
 - Quest search by keyword
 - Event-driven architecture for level-up notifications
 - Frontend UI for visual interaction
+
