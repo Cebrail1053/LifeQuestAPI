@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface QuestService {
 
-    List<QuestResponseDTO> getAllQuests();
+    List<QuestResponseDTO> getAllQuests(String difficulty);
 
     QuestResponseDTO getQuestById(Long id);
 

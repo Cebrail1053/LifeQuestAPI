@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface ItemService {
 
-    List<ItemResponseDTO> getAllItems();
+    List<ItemResponseDTO> getAllItems(String rarity, String itemType);
 
     ItemResponseDTO createItem(ItemRequestDTO requestDTO);
 }

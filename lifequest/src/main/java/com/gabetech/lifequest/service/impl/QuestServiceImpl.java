@@ -9,6 +9,7 @@ import com.gabetech.lifequest.repository.QuestRepository;
 import com.gabetech.lifequest.service.QuestService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.util.List;
 
@@ -19,7 +20,19 @@ public class QuestServiceImpl implements QuestService {
     private final QuestRepository questRepository;
 
     @Override
-    public List<QuestResponseDTO> getAllQuests() {
+    public List<QuestResponseDTO> getAllQuests(String difficultyFilter) {
+        if(StringUtils.hasText(difficultyFilter)) {
+            Difficulty difficulty;
+            try {
+                difficulty = Difficulty.valueOf(difficultyFilter.toUpperCase());
+            } catch (IllegalArgumentException e) {
+                throw new RuntimeException("Invalid difficulty filter: " + difficultyFilter);
+            }
+            return questRepository.findAll().stream()
+                  .filter(quest -> quest.getDifficulty().equals(difficulty))
+                  .map(MapperUtil::toDto)
+                  .toList();
+        }
         return questRepository.findAll().stream().map(MapperUtil::toDto).toList();
     }
 

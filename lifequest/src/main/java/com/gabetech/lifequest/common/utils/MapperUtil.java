@@ -94,7 +94,7 @@ public class MapperUtil {
         Quest quest = new Quest();
         quest.setTitle(requestDTO.title());
         quest.setDescription(requestDTO.description());
-        quest.setDifficulty(Difficulty.valueOf(requestDTO.difficulty()));
+        quest.setDifficulty(Difficulty.valueOf(requestDTO.difficulty().toUpperCase()));
         quest.setXpReward(requestDTO.xpReward());
         return quest;
     }
