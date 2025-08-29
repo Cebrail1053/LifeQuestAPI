@@ -9,6 +9,17 @@ CREATE SCHEMA IF NOT EXISTS lifequestdb;
 SET SCHEMA lifequestdb;
 
 -- ===============================
+-- Drop existing tables if they exist
+-- ===============================
+DROP TABLE IF EXISTS player_achievement;
+DROP TABLE IF EXISTS inventory;
+DROP TABLE IF EXISTS player_quest;
+DROP TABLE IF EXISTS achievement;
+DROP TABLE IF EXISTS item;
+DROP TABLE IF EXISTS quest;
+DROP TABLE IF EXISTS player;
+
+-- ===============================
 -- Players
 -- ===============================
 CREATE TABLE IF NOT EXISTS player (
