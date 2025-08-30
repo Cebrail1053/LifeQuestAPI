@@ -32,7 +32,7 @@ public class QuestController {
     }
 
     @GetMapping(Path.QUESTS)
-    public ResponseEntity<List<QuestResponseDTO>> getAllQuests(@RequestParam String difficulty) {
+    public ResponseEntity<List<QuestResponseDTO>> getAllQuests(@RequestParam(required = false) String difficulty) {
         List<QuestResponseDTO> quests = questService.getAllQuests(difficulty);
         return ResponseEntity.ok(quests);
     }

@@ -52,7 +52,7 @@ public class QuestServiceImpl implements QuestService {
         Quest updatedQuest = questRepository.findById(id).map(quest -> {
             quest.setTitle(requestDTO.title());
             quest.setDescription(requestDTO.description());
-            quest.setDifficulty(Difficulty.valueOf(requestDTO.difficulty()));
+            quest.setDifficulty(Difficulty.valueOf(requestDTO.difficulty().toUpperCase()));
             quest.setXpReward(requestDTO.xpReward());
             return quest;
         }).orElseThrow(() -> new RuntimeException("Quest not found with id: " + id));

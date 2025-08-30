@@ -28,8 +28,8 @@ public class ItemController {
     }
 
     @GetMapping(Path.ITEMS)
-    public ResponseEntity<List<ItemResponseDTO>> getAllItems(@RequestParam String rarity,
-                                                             @RequestParam String itemType) {
+    public ResponseEntity<List<ItemResponseDTO>> getAllItems(@RequestParam(required = false) String rarity,
+                                                             @RequestParam(required = false) String itemType) {
         List<ItemResponseDTO> items = itemService.getAllItems(rarity, itemType);
         return ResponseEntity.ok(items);
     }
