@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 import java.util.Set;
 
 public record PlayerResponseDTO(int id, String name, int level, int xp, LocalDateTime createdAt,
-                                @JsonInclude(JsonInclude.Include.NON_NULL)Set<PlayerAchievement> achievements,
-                                @JsonInclude(JsonInclude.Include.NON_NULL)Set<Inventory> inventory,
-                                @JsonInclude(JsonInclude.Include.NON_NULL)Set<PlayerQuest> quests) {
+                                @JsonInclude(JsonInclude.Include.NON_EMPTY)Set<PlayerAchievement> achievements,
+                                @JsonInclude(JsonInclude.Include.NON_EMPTY)Set<Inventory> inventory,
+                                @JsonInclude(JsonInclude.Include.NON_EMPTY)Set<PlayerQuest> quests) {
 }
