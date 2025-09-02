@@ -3,6 +3,8 @@ package com.gabetech.lifequest.controller;
 import com.gabetech.lifequest.common.Path;
 import com.gabetech.lifequest.model.dto.PlayerRequestDTO;
 import com.gabetech.lifequest.model.dto.PlayerResponseDTO;
+import com.gabetech.lifequest.service.InventoryService;
+import com.gabetech.lifequest.service.PlayerQuestService;
 import com.gabetech.lifequest.service.PlayerService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +26,8 @@ import java.util.List;
 public class PlayerController {
 
     private final PlayerService playerService;
+    private final InventoryService inventoryService;
+    private final PlayerQuestService playerQuestService;
 
     @PostMapping(Path.PLAYERS)
     public ResponseEntity<PlayerResponseDTO> createPlayer(@RequestBody PlayerRequestDTO requestDTO) {
