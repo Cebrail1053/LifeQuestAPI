@@ -13,6 +13,8 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
+
 @Service
 @RequiredArgsConstructor
 @Transactional
@@ -44,8 +46,9 @@ public class PlayerQuestServiceImpl implements PlayerQuestService {
 
         playerQuestRepository.findById(id).ifPresentOrElse(playerQuest -> {
             playerQuest.setStatus(QuestStatus.COMPLETED);
-            playerQuest.setCompletedAt(java.time.LocalDateTime.now());
+            playerQuest.setCompletedAt(LocalDateTime.now());
             playerQuestRepository.save(playerQuest);
+            // TODO: publish event to process game logic (reward xp, level up, achievement check)
         }, () -> {
             throw new RuntimeException("PlayerQuest not found");
         });
