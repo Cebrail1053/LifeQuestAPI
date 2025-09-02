@@ -1,8 +1,8 @@
 package com.gabetech.lifequest.service.impl;
 
 import com.gabetech.lifequest.common.utils.MapperUtil;
-import com.gabetech.lifequest.model.dto.ItemRequestDTO;
-import com.gabetech.lifequest.model.dto.ItemResponseDTO;
+import com.gabetech.lifequest.domain.dto.ItemRequestDTO;
+import com.gabetech.lifequest.domain.dto.ItemResponseDTO;
 import com.gabetech.lifequest.model.entity.Item;
 import com.gabetech.lifequest.model.enums.ItemType;
 import com.gabetech.lifequest.model.enums.Rarity;

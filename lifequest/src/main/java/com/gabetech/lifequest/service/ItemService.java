@@ -1,7 +1,7 @@
 package com.gabetech.lifequest.service;
 
-import com.gabetech.lifequest.model.dto.ItemRequestDTO;
-import com.gabetech.lifequest.model.dto.ItemResponseDTO;
+import com.gabetech.lifequest.domain.dto.ItemRequestDTO;
+import com.gabetech.lifequest.domain.dto.ItemResponseDTO;
 
 import java.util.List;
 

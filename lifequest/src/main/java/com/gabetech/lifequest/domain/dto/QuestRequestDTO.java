@@ -1,4 +1,4 @@
-package com.gabetech.lifequest.model.dto;
+package com.gabetech.lifequest.domain.dto;
 
 public record QuestRequestDTO(String title, String description, String difficulty, int xpReward) {
 }

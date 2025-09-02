@@ -1,13 +1,13 @@
 package com.gabetech.lifequest.common.utils;
 
-import com.gabetech.lifequest.model.dto.AchievementRequestDTO;
-import com.gabetech.lifequest.model.dto.AchievementResponseDTO;
-import com.gabetech.lifequest.model.dto.ItemRequestDTO;
-import com.gabetech.lifequest.model.dto.ItemResponseDTO;
-import com.gabetech.lifequest.model.dto.PlayerRequestDTO;
-import com.gabetech.lifequest.model.dto.PlayerResponseDTO;
-import com.gabetech.lifequest.model.dto.QuestRequestDTO;
-import com.gabetech.lifequest.model.dto.QuestResponseDTO;
+import com.gabetech.lifequest.domain.dto.AchievementRequestDTO;
+import com.gabetech.lifequest.domain.dto.AchievementResponseDTO;
+import com.gabetech.lifequest.domain.dto.ItemRequestDTO;
+import com.gabetech.lifequest.domain.dto.ItemResponseDTO;
+import com.gabetech.lifequest.domain.dto.PlayerRequestDTO;
+import com.gabetech.lifequest.domain.dto.PlayerResponseDTO;
+import com.gabetech.lifequest.domain.dto.QuestRequestDTO;
+import com.gabetech.lifequest.domain.dto.QuestResponseDTO;
 import com.gabetech.lifequest.model.entity.Achievement;
 import com.gabetech.lifequest.model.entity.Inventory;
 import com.gabetech.lifequest.model.entity.Item;

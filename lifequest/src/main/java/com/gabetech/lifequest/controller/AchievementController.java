@@ -1,10 +1,11 @@
 package com.gabetech.lifequest.controller;
 
 import com.gabetech.lifequest.common.Path;
-import com.gabetech.lifequest.model.dto.AchievementRequestDTO;
-import com.gabetech.lifequest.model.dto.AchievementResponseDTO;
+import com.gabetech.lifequest.domain.dto.AchievementRequestDTO;
+import com.gabetech.lifequest.domain.dto.AchievementResponseDTO;
 import com.gabetech.lifequest.service.AchievementService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,7 +25,7 @@ public class AchievementController {
     @PostMapping(Path.ACHIEVEMENTS)
     public ResponseEntity<AchievementResponseDTO> createAchievement(@RequestBody AchievementRequestDTO requestDTO) {
         AchievementResponseDTO responseDTO = achievementService.createAchievement(requestDTO);
-        return ResponseEntity.ok(responseDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).body(responseDTO);
     }
 
     @GetMapping(Path.ACHIEVEMENTS)

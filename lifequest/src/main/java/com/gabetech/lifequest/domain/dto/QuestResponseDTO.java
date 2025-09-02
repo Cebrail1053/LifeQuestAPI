@@ -1,4 +1,4 @@
-package com.gabetech.lifequest.model.dto;
+package com.gabetech.lifequest.domain.dto;
 
 import com.gabetech.lifequest.model.entity.PlayerQuest;
 import com.gabetech.lifequest.model.enums.Difficulty;

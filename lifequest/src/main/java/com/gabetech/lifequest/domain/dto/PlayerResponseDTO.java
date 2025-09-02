@@ -1,4 +1,4 @@
-package com.gabetech.lifequest.model.dto;
+package com.gabetech.lifequest.domain.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.gabetech.lifequest.model.entity.Inventory;

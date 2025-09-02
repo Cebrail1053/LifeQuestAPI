@@ -1,8 +1,7 @@
 package com.gabetech.lifequest.service;
 
-import com.gabetech.lifequest.model.dto.AchievementRequestDTO;
-import com.gabetech.lifequest.model.dto.AchievementResponseDTO;
-import com.gabetech.lifequest.model.entity.Achievement;
+import com.gabetech.lifequest.domain.dto.AchievementRequestDTO;
+import com.gabetech.lifequest.domain.dto.AchievementResponseDTO;
 
 import java.util.List;
 

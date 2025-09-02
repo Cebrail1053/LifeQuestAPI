@@ -1,8 +1,8 @@
 package com.gabetech.lifequest.service.impl;
 
 import com.gabetech.lifequest.common.utils.MapperUtil;
-import com.gabetech.lifequest.model.dto.AchievementRequestDTO;
-import com.gabetech.lifequest.model.dto.AchievementResponseDTO;
+import com.gabetech.lifequest.domain.dto.AchievementRequestDTO;
+import com.gabetech.lifequest.domain.dto.AchievementResponseDTO;
 import com.gabetech.lifequest.model.entity.Achievement;
 import com.gabetech.lifequest.repository.AchievementRepository;
 import com.gabetech.lifequest.service.AchievementService;

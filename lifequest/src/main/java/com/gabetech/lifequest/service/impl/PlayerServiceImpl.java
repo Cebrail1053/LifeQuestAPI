@@ -1,8 +1,8 @@
 package com.gabetech.lifequest.service.impl;
 
 import com.gabetech.lifequest.common.utils.MapperUtil;
-import com.gabetech.lifequest.model.dto.PlayerRequestDTO;
-import com.gabetech.lifequest.model.dto.PlayerResponseDTO;
+import com.gabetech.lifequest.domain.dto.PlayerRequestDTO;
+import com.gabetech.lifequest.domain.dto.PlayerResponseDTO;
 import com.gabetech.lifequest.model.entity.Player;
 import com.gabetech.lifequest.repository.PlayerRepository;
 import com.gabetech.lifequest.service.PlayerService;

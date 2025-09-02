@@ -1,8 +1,8 @@
 package com.gabetech.lifequest.controller;
 
 import com.gabetech.lifequest.common.Path;
-import com.gabetech.lifequest.model.dto.QuestRequestDTO;
-import com.gabetech.lifequest.model.dto.QuestResponseDTO;
+import com.gabetech.lifequest.domain.dto.QuestRequestDTO;
+import com.gabetech.lifequest.domain.dto.QuestResponseDTO;
 import com.gabetech.lifequest.service.QuestService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;

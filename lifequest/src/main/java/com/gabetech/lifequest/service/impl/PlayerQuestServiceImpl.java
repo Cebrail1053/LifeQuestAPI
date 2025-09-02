@@ -9,6 +9,7 @@ import com.gabetech.lifequest.model.enums.QuestStatus;
 import com.gabetech.lifequest.repository.PlayerQuestRepository;
 import com.gabetech.lifequest.service.PlayerQuestService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class PlayerQuestServiceImpl implements PlayerQuestService {
 
+    private final ApplicationEventPublisher publisher;
     private final PlayerQuestRepository playerQuestRepository;
     private final EntityExistenceValidator entityExistenceValidator;
 

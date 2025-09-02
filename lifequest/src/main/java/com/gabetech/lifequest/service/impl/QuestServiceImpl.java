@@ -1,8 +1,8 @@
 package com.gabetech.lifequest.service.impl;
 
 import com.gabetech.lifequest.common.utils.MapperUtil;
-import com.gabetech.lifequest.model.dto.QuestRequestDTO;
-import com.gabetech.lifequest.model.dto.QuestResponseDTO;
+import com.gabetech.lifequest.domain.dto.QuestRequestDTO;
+import com.gabetech.lifequest.domain.dto.QuestResponseDTO;
 import com.gabetech.lifequest.model.entity.Quest;
 import com.gabetech.lifequest.model.enums.Difficulty;
 import com.gabetech.lifequest.repository.QuestRepository;

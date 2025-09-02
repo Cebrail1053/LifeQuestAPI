@@ -1,12 +1,13 @@
 package com.gabetech.lifequest.controller;
 
 import com.gabetech.lifequest.common.Path;
-import com.gabetech.lifequest.model.dto.PlayerRequestDTO;
-import com.gabetech.lifequest.model.dto.PlayerResponseDTO;
+import com.gabetech.lifequest.domain.dto.PlayerRequestDTO;
+import com.gabetech.lifequest.domain.dto.PlayerResponseDTO;
 import com.gabetech.lifequest.service.InventoryService;
 import com.gabetech.lifequest.service.PlayerQuestService;
 import com.gabetech.lifequest.service.PlayerService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,7 +33,7 @@ public class PlayerController {
     @PostMapping(Path.PLAYERS)
     public ResponseEntity<PlayerResponseDTO> createPlayer(@RequestBody PlayerRequestDTO requestDTO) {
         PlayerResponseDTO responseDTO = playerService.createPlayer(requestDTO);
-        return ResponseEntity.ok(responseDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).body(responseDTO);
     }
 
     @GetMapping(Path.PLAYERS)
@@ -60,4 +61,9 @@ public class PlayerController {
         return ResponseEntity.ok().body("Player deleted successfully");
     }
 
+    @PostMapping(Path.PLAYER_QUEST_BY_ID)
+    public ResponseEntity<?> assignQuestToPlayer(@PathVariable Long playerId, @PathVariable Long questId) {
+        playerQuestService.assignQuestToPlayer(playerId, questId);
+        return ResponseEntity.ok().body("Quest assigned to player successfully");
+    }
 }
