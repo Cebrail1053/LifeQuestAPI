@@ -43,6 +43,7 @@ public class InventoryServiceImpl implements InventoryService {
         PlayerInventoryId id = new PlayerInventoryId(playerId.intValue(), itemId.intValue());
         inventoryRepository.findById(id).ifPresentOrElse(inventory -> {
             if (inventory.getQuantity() < quantity) {
+                // TODO: Handle this case gracefully
                 throw new RuntimeException("Not enough items in inventory");
             }
 
