@@ -43,21 +43,21 @@ public class PlayerController {
     }
 
     @GetMapping(Path.PLAYER_BY_ID)
-    public ResponseEntity<PlayerResponseDTO> getPlayerById(@PathVariable Long id) {
-        PlayerResponseDTO responseDTO = playerService.getPlayerById(id);
+    public ResponseEntity<PlayerResponseDTO> getPlayerById(@PathVariable Long playerId) {
+        PlayerResponseDTO responseDTO = playerService.getPlayerById(playerId);
         return ResponseEntity.ok(responseDTO);
     }
 
     @PutMapping(Path.PLAYER_BY_ID)
-    public ResponseEntity<PlayerResponseDTO> updatePlayer(@PathVariable Long id,
+    public ResponseEntity<PlayerResponseDTO> updatePlayer(@PathVariable Long playerId,
                                                           @RequestBody PlayerRequestDTO requestDTO) {
-        PlayerResponseDTO responseDTO = playerService.updatePlayer(id, requestDTO);
+        PlayerResponseDTO responseDTO = playerService.updatePlayer(playerId, requestDTO);
         return ResponseEntity.ok(responseDTO);
     }
 
     @DeleteMapping(Path.PLAYER_BY_ID)
-    public ResponseEntity<?> deletePlayer(@PathVariable Long id) {
-        playerService.deletePlayer(id);
+    public ResponseEntity<?> deletePlayer(@PathVariable Long playerId) {
+        playerService.deletePlayer(playerId);
         return ResponseEntity.ok().body("Player deleted successfully");
     }
 
@@ -65,5 +65,11 @@ public class PlayerController {
     public ResponseEntity<?> assignQuestToPlayer(@PathVariable Long playerId, @PathVariable Long questId) {
         playerQuestService.assignQuestToPlayer(playerId, questId);
         return ResponseEntity.ok().body("Quest assigned to player successfully");
+    }
+
+    @PutMapping(Path.PLAYER_QUEST_BY_ID + "/complete")
+    public ResponseEntity<?> completeQuestForPlayer(@PathVariable Long playerId, @PathVariable Long questId) {
+        playerQuestService.completeQuestForPlayer(playerId, questId);
+        return ResponseEntity.ok().body("Quest completed for player successfully");
     }
 }

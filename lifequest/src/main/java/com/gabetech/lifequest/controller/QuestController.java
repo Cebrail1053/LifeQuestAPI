@@ -38,21 +38,21 @@ public class QuestController {
     }
 
     @GetMapping(Path.QUEST_BY_ID)
-    public ResponseEntity<QuestResponseDTO> getQuestById(@PathVariable Long id) {
-        QuestResponseDTO responseDTO = questService.getQuestById(id);
+    public ResponseEntity<QuestResponseDTO> getQuestById(@PathVariable Long questId) {
+        QuestResponseDTO responseDTO = questService.getQuestById(questId);
         return ResponseEntity.ok(responseDTO);
     }
 
     @PutMapping(Path.QUEST_BY_ID)
-    public ResponseEntity<QuestResponseDTO> updateQuest(@PathVariable Long id,
+    public ResponseEntity<QuestResponseDTO> updateQuest(@PathVariable Long questId,
                                                         @RequestBody QuestRequestDTO requestDTO) {
-        QuestResponseDTO responseDTO = questService.updateQuest(id, requestDTO);
+        QuestResponseDTO responseDTO = questService.updateQuest(questId, requestDTO);
         return ResponseEntity.ok(responseDTO);
     }
 
     @DeleteMapping(Path.QUEST_BY_ID)
-    public ResponseEntity<?> deleteQuest(@PathVariable Long id) {
-        questService.deleteQuest(id);
+    public ResponseEntity<?> deleteQuest(@PathVariable Long questId) {
+        questService.deleteQuest(questId);
         return ResponseEntity.ok().body("Quest deleted successfully");
     }
 }
