@@ -1,6 +1,7 @@
 package com.gabetech.lifequest.service.impl;
 
-import com.gabetech.lifequest.common.helper.EntityExistenceValidator;
+import com.gabetech.lifequest.common.validation.EntityExistenceValidator;
+import com.gabetech.lifequest.domain.QuestCompletionEvent;
 import com.gabetech.lifequest.model.entity.Player;
 import com.gabetech.lifequest.model.entity.PlayerQuest;
 import com.gabetech.lifequest.model.entity.Quest;
@@ -48,7 +49,11 @@ public class PlayerQuestServiceImpl implements PlayerQuestService {
             playerQuest.setStatus(QuestStatus.COMPLETED);
             playerQuest.setCompletedAt(LocalDateTime.now());
             playerQuestRepository.save(playerQuest);
-            // TODO: publish event to process game logic (reward xp, level up, achievement check)
+
+            QuestCompletionEvent event = new QuestCompletionEvent(playerQuest.getPlayer(),
+                  playerQuest.getQuest().getXpReward());
+
+            publisher.publishEvent(event);
         }, () -> {
             throw new RuntimeException("PlayerQuest not found");
         });

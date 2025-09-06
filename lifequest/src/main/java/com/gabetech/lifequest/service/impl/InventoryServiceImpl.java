@@ -1,6 +1,6 @@
 package com.gabetech.lifequest.service.impl;
 
-import com.gabetech.lifequest.common.helper.EntityExistenceValidator;
+import com.gabetech.lifequest.common.validation.EntityExistenceValidator;
 import com.gabetech.lifequest.model.entity.Inventory;
 import com.gabetech.lifequest.model.entity.Item;
 import com.gabetech.lifequest.model.entity.Player;

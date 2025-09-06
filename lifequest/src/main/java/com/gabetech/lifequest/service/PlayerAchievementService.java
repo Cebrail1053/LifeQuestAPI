@@ -1,6 +1,8 @@
 package com.gabetech.lifequest.service;
 
+import com.gabetech.lifequest.model.entity.Player;
+
 public interface PlayerAchievementService {
 
-    void unlockAchievementForPlayer(Long playerId);
+    void unlockAchievementForPlayer(Player player);
 }

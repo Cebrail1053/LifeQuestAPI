@@ -1,11 +1,10 @@
 package com.gabetech.lifequest.domain;
 
+import com.gabetech.lifequest.model.entity.Player;
 import lombok.Value;
 
 @Value
 public class QuestCompletionEvent {
-    int playerLevel;
-    int playerXp;
+    Player player;
     int rewardXp;
-    // TODO: Add required fields for achievement check
 }

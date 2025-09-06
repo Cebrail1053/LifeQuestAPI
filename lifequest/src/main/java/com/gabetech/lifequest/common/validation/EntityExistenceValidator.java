@@ -1,4 +1,4 @@
-package com.gabetech.lifequest.common.helper;
+package com.gabetech.lifequest.common.validation;
 
 import com.gabetech.lifequest.model.entity.Achievement;
 import com.gabetech.lifequest.model.entity.Item;
