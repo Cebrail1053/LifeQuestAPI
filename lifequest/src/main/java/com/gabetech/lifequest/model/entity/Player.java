@@ -21,7 +21,7 @@ import java.util.Set;
 @Getter
 @Setter
 @NoArgsConstructor
-@ToString
+@ToString(exclude = {"achievements", "inventory", "quests"})
 public class Player {
 
     @Id

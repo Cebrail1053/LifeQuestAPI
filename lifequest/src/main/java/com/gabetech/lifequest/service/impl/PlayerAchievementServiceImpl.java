@@ -1,23 +1,29 @@
 package com.gabetech.lifequest.service.impl;
 
+import com.gabetech.lifequest.config.context.PlayerEvaluationContext;
 import com.gabetech.lifequest.model.entity.Achievement;
 import com.gabetech.lifequest.model.entity.Player;
 import com.gabetech.lifequest.model.entity.PlayerAchievement;
 import com.gabetech.lifequest.model.entity.embed.PlayerAchievementId;
+import com.gabetech.lifequest.model.enums.QuestStatus;
 import com.gabetech.lifequest.repository.AchievementRepository;
 import com.gabetech.lifequest.repository.PlayerRepository;
 import com.gabetech.lifequest.service.PlayerAchievementService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.expression.ExpressionParser;
 import org.springframework.expression.spel.standard.SpelExpressionParser;
 import org.springframework.expression.spel.support.StandardEvaluationContext;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
+@Slf4j
 public class PlayerAchievementServiceImpl implements PlayerAchievementService {
 
     private final PlayerRepository playerRepository;
@@ -42,6 +48,8 @@ public class PlayerAchievementServiceImpl implements PlayerAchievementService {
                     PlayerAchievementId id = new PlayerAchievementId(playerId.intValue(), achievement.getId());
                     PlayerAchievement playerAchievement = new PlayerAchievement();
                     playerAchievement.setId(id);
+                    playerAchievement.setPlayer(player);
+                    playerAchievement.setAchievement(achievement);
                     playerAchievement.setUnlockedAt(LocalDateTime.now());
                     player.getAchievements().add(playerAchievement);
                 }
@@ -51,9 +59,8 @@ public class PlayerAchievementServiceImpl implements PlayerAchievementService {
     }
 
     private boolean isConditionMet(Player player, Achievement achievement) {
-        // TODO: Test this with db condition values
         ExpressionParser parser = new SpelExpressionParser();
-        StandardEvaluationContext context = new StandardEvaluationContext(player);
+        PlayerEvaluationContext context = new PlayerEvaluationContext(player);
         Boolean result = parser.parseExpression(achievement.getCondition()).getValue(context, Boolean.class);
         return Boolean.TRUE.equals(result);
     }
