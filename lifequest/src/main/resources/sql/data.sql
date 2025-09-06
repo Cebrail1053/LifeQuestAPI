@@ -27,7 +27,7 @@ INSERT INTO item (name, type, rarity, created_at) VALUES
 -- Achievements
 -- ===============================
 INSERT INTO achievement (name, description, condition, created_at) VALUES
-('First Blood', 'Complete your first quest', 'quests > 1', CURRENT_TIMESTAMP),
+('First Blood', 'Complete your first quest', 'quests.?[status == T(QuestStatus).COMPLETED].size() >= 1', CURRENT_TIMESTAMP),
 ('Apprentice Adventurer', 'Reach level 5', 'level >= 5', CURRENT_TIMESTAMP),
 ('Treasure Hunter', 'Collect 10 rare or higher items', 'inventory.?[item.rarity.ordinal() >= T(Rarity).RARE.ordinal()].size() >= 10', CURRENT_TIMESTAMP);
 
