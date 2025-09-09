@@ -1,8 +1,8 @@
 package com.gabetech.lifequest.service;
 
-import com.gabetech.lifequest.model.entity.Player;
+import com.gabetech.lifequest.domain.QuestCompletionEvent;
 
 public interface PlayerAchievementService {
 
-    void unlockAchievementForPlayer(Player player);
+    void handleAchievementUnlockForPlayer(QuestCompletionEvent event);
 }

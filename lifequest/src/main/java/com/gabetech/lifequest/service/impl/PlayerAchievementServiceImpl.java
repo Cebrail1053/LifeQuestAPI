@@ -1,6 +1,8 @@
 package com.gabetech.lifequest.service.impl;
 
+import com.gabetech.lifequest.common.helper.GameLogicHelper;
 import com.gabetech.lifequest.config.context.PlayerEvaluationContext;
+import com.gabetech.lifequest.domain.QuestCompletionEvent;
 import com.gabetech.lifequest.model.entity.Achievement;
 import com.gabetech.lifequest.model.entity.Player;
 import com.gabetech.lifequest.model.entity.PlayerAchievement;
@@ -10,6 +12,7 @@ import com.gabetech.lifequest.repository.PlayerRepository;
 import com.gabetech.lifequest.service.PlayerAchievementService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.event.EventListener;
 import org.springframework.expression.ExpressionParser;
 import org.springframework.expression.spel.standard.SpelExpressionParser;
 import org.springframework.stereotype.Service;
@@ -26,9 +29,13 @@ public class PlayerAchievementServiceImpl implements PlayerAchievementService {
 
     private final PlayerRepository playerRepository;
     private final AchievementRepository achievementRepository;
+    private final GameLogicHelper logicHelper;
 
     @Override
-    public void unlockAchievementForPlayer(Player player) {
+    @EventListener
+    public void handleAchievementUnlockForPlayer(QuestCompletionEvent event) {
+        Player player = getUpdatedPlayer(event);
+
         List<Achievement> playerAchievements = player.getAchievements().stream()
               .map(PlayerAchievement::getAchievement).toList();
 
@@ -57,5 +64,12 @@ public class PlayerAchievementServiceImpl implements PlayerAchievementService {
         PlayerEvaluationContext context = new PlayerEvaluationContext(player);
         Boolean result = parser.parseExpression(achievement.getCondition()).getValue(context, Boolean.class);
         return Boolean.TRUE.equals(result);
+    }
+
+    private Player getUpdatedPlayer(QuestCompletionEvent event) {
+        Player player = event.getPlayer();
+        int xpReward = event.getRewardXp();
+        Player updatedPlayer = logicHelper.handlePlayerLevelUp(player, xpReward);
+        return playerRepository.save(updatedPlayer);
     }
 }
