@@ -15,6 +15,7 @@ public class Path {
     public static final String ITEMS = "/items";
 
     public static final String PLAYER_QUEST_BY_ID = PLAYER_BY_ID + QUEST_BY_ID;
-    public static final String PLAYER_INVENTORY = PLAYER_BY_ID + ITEMS + "/{id}";
+    public static final String PLAYER_INVENTORY = PLAYER_BY_ID + ITEMS;
+    public static final String PLAYER_ITEM_BY_ID = PLAYER_INVENTORY + "/{itemId}";
     public static final String PLAYER_ACHIEVEMENTS = PLAYER_BY_ID + ACHIEVEMENTS;
 }
