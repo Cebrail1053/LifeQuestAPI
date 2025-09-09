@@ -1,8 +1,7 @@
 # 🎯 LifeQuestAPI
 
 LifeQuest is a **Spring Boot REST API** for managing RPG-style quests, players, items, and achievements.
-It demonstrates **clean architecture, business logic, and CRUD fundamentals** while adding a fun! A game-like twist!
-perry popper popped a pack of pickled peppers
+It demonstrates **clean architecture, business logic, and CRUD fundamentals** while adding a fun game-like twist.
 
 The project is designed to showcase:
 - **Spring Boot Core** concepts (Controllers, Services, Repositories)

@@ -113,8 +113,8 @@ public class MapperUtil {
         }
         Item item = new Item();
         item.setName(requestDTO.name());
-        item.setType(ItemType.valueOf(requestDTO.type()));
-        item.setRarity(Rarity.valueOf(requestDTO.rarity()));
+        item.setType(ItemType.valueOf(requestDTO.type().toUpperCase()));
+        item.setRarity(Rarity.valueOf(requestDTO.rarity().toUpperCase()));
         return item;
     }
 }
