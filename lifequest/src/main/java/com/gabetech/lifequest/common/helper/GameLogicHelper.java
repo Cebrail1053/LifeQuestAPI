@@ -12,15 +12,21 @@ public class GameLogicHelper {
         int totalXp = player.getXp() + xpReward;
         int level = player.getLevel();
         int xpForNextLevel = calculateXpForNextLevel(level);
-        log.info("event = \"Calculating XP for Level Up\" currentLevel={} currentXp={} xpReward={} totalXp={} xpForNextLevel={}",
-                level, player.getXp(), xpReward, totalXp, xpForNextLevel);
+        log.info("event = \"Calculating XP for Level Up\" currentLevel={} xpReward={} totalXp={} xpForNextLevel={}",
+              level, xpReward, totalXp, xpForNextLevel);
 
-        if (totalXp >= xpForNextLevel) {
-            player.setLevel(++level);
+        while (totalXp >= xpForNextLevel) {
+            totalXp -= xpForNextLevel;
+            xpForNextLevel = calculateXpForNextLevel(++level);
+            logCalculationDetails(level, totalXp, xpForNextLevel);
+        }
+
+        if (player.getLevel() != level) {
+            player.setLevel(level);
             log.info("event = \"Player leveled up! New level: {}\"", level);
         }
 
-        player.setXp(totalXp);
+        player.setXp(player.getXp() + xpReward);
         return player;
     }
 
@@ -32,5 +38,10 @@ public class GameLogicHelper {
         double result = XP_MULTIPLIER * Math.pow(level - 1, 2);
         result += XP_INCREMENT_PER_LEVEL * (level - 1) + INITIAL_XP_FOR_NEXT_LEVEL;
         return (int) Math.floor(result);
+    }
+
+    private void logCalculationDetails(int level, int totalXp, int xpForNextLevel) {
+        log.info("event = \"Calculating XP for Level Up\" currentLevel={} remainingXp={} xpForNextLevel={}",
+              level, totalXp, xpForNextLevel);
     }
 }
