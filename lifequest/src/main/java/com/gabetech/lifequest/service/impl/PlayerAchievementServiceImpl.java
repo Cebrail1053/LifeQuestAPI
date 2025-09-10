@@ -52,6 +52,7 @@ public class PlayerAchievementServiceImpl implements PlayerAchievementService {
                     playerAchievement.setPlayer(player);
                     playerAchievement.setAchievement(achievement);
                     playerAchievement.setUnlockedAt(LocalDateTime.now());
+                    log.info("event=\"Achievement Unlocked\" playerAchievementId={}", id);
                     player.getAchievements().add(playerAchievement);
                 }
             });

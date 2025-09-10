@@ -9,6 +9,7 @@ import com.gabetech.lifequest.model.enums.Rarity;
 import com.gabetech.lifequest.repository.ItemRepository;
 import com.gabetech.lifequest.service.ItemService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -17,6 +18,7 @@ import java.util.stream.Stream;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class ItemServiceImpl implements ItemService {
 
     private final ItemRepository itemRepository;
@@ -25,6 +27,7 @@ public class ItemServiceImpl implements ItemService {
     public List<ItemResponseDTO> getAllItems(String rarityFilter, String itemTypeFilter) {
         final Rarity rarity = parseEnum(Rarity.class, rarityFilter, "Invalid rarity filter");
         final ItemType itemType = parseEnum(ItemType.class, itemTypeFilter, "Invalid item type filter");
+        log.info("Fetching items with filters - rarity: {}, itemType: {}", rarity, itemType);
 
         Stream<Item> itemStream = itemRepository.findAll().stream();
         if (rarity != null) {

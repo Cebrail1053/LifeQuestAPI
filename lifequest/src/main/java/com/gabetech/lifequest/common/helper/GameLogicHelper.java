@@ -12,6 +12,8 @@ public class GameLogicHelper {
         int totalXp = player.getXp() + xpReward;
         int level = player.getLevel();
         int xpForNextLevel = calculateXpForNextLevel(level);
+        log.info("event = \"Calculating XP for Level Up\" currentLevel={} currentXp={} xpReward={} totalXp={} xpForNextLevel={}",
+                level, player.getXp(), xpReward, totalXp, xpForNextLevel);
 
         if (totalXp >= xpForNextLevel) {
             player.setLevel(++level);

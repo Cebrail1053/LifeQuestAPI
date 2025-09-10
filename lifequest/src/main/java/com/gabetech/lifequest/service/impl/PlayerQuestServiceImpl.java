@@ -11,6 +11,7 @@ import com.gabetech.lifequest.repository.PlayerRepository;
 import com.gabetech.lifequest.repository.QuestRepository;
 import com.gabetech.lifequest.service.PlayerQuestService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,6 +21,7 @@ import java.time.LocalDateTime;
 @Service
 @RequiredArgsConstructor
 @Transactional
+@Slf4j
 public class PlayerQuestServiceImpl implements PlayerQuestService {
 
     private final ApplicationEventPublisher publisher;
@@ -29,14 +31,16 @@ public class PlayerQuestServiceImpl implements PlayerQuestService {
 
     @Override
     public void assignQuestToPlayer(Long playerId, Long questId) {
+        log.info("Validating player and item existence, playerId={}, questId={}", playerId, questId);
         Player player = playerRepository.findById(playerId)
               .orElseThrow(() -> new RuntimeException("Player not found"));
         Quest quest = questRepository.findById(questId)
               .orElseThrow(() -> new RuntimeException("Quest not found"));
 
         PlayerQuestId id = new PlayerQuestId(playerId.intValue(), questId.intValue());
+        log.info("Player and quest validated, proceeding to assign quest to player with id={}", id);
         if (playerQuestRepository.existsById(id)) {
-            throw new RuntimeException("Quest already assigned to player");
+            throw new RuntimeException("Quest already assigned to player"); // TODO custom exception here
         }
 
         PlayerQuest playerQuest = assignPlayerQuest(id, player, quest);
@@ -52,12 +56,14 @@ public class PlayerQuestServiceImpl implements PlayerQuestService {
             playerQuest.setCompletedAt(LocalDateTime.now());
             playerQuestRepository.save(playerQuest);
 
+            log.info("event=\"Quest Completed\" playerQuestId={}", id);
+
             QuestCompletionEvent event = new QuestCompletionEvent(playerQuest.getPlayer(),
                   playerQuest.getQuest().getXpReward());
 
             publisher.publishEvent(event);
         }, () -> {
-            throw new RuntimeException("PlayerQuest not found");
+            throw new RuntimeException("PlayerQuest not found"); // TODO custom exception here
         });
     }
 

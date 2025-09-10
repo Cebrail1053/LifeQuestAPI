@@ -8,6 +8,7 @@ import com.gabetech.lifequest.model.enums.Difficulty;
 import com.gabetech.lifequest.repository.QuestRepository;
 import com.gabetech.lifequest.service.QuestService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -15,6 +16,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class QuestServiceImpl implements QuestService {
 
     private final QuestRepository questRepository;
@@ -28,11 +30,13 @@ public class QuestServiceImpl implements QuestService {
             } catch (IllegalArgumentException e) {
                 throw new RuntimeException("Invalid difficulty filter: " + difficultyFilter);
             }
+            log.info("Filtering all quests by difficulty: {}", difficulty);
             return questRepository.findAll().stream()
                   .filter(quest -> quest.getDifficulty().equals(difficulty))
                   .map(MapperUtil::toDto)
                   .toList();
         }
+        log.info("Retrieving all quests without difficulty filter");
         return questRepository.findAll().stream().map(MapperUtil::toDto).toList();
     }
 
